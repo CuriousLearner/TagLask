@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Add Tags</title>
+	</head>
+	<body>
+		<h1> Search Directory </h1>
+		<h4> Please fill in the form below to search your file: </h4>
+		<form action="" method="POST">
+			<label>File Name or Initials: </label>
+			<input type="text" name="filename" />
+			<label>Type of File:</label>
+			<select name="file_type">
+				<option name="TEXT">TEXT</option>
+				<option name="PYTHON">PYTHON</option>
+				<option name="PHOTO">PHOTO</option>
+				<option name="MEDIA">MEDIA</option>
+				<option name="C">C</option>
+				<option name="CPP">CPP</option>
+				<option name="HTML">HTML</option>
+				<option name="CSS">CSS</option>
+				<option name="JS">JAVA SCRIPT</option>
+				<option name="JAVA">JAVA</option>
+				<option name="ANDROID">ANDROID</option>
+				<option name="EXE">WINDOWS EXECUTABLE</option>
+				<option name="PPT">PRESENTATION</option>
+				<option name="DOC">WORD DOCUMENT</option>
+				<option name="PDF">PDF</option>
+				<option name="ASP">ASP</option>
+				<option name="JSP">JAVA SERVER PAGES</option>
+				<option name="AUDIO">AUDIO</option>
+				<option name="XML">XML</option>
+				<option name="ARCHIVE">ARCHIVE</option>
+				<option name="COMPRESSED">COMPRESSED</option>
+				<option name="AMR">VOICE RECORDING</option>
+				<option name="HTML">HTML</option>
+				<option name="CSS">CSS</option>
+				<option name="JSON">JSON</option>
+				<option name="SH">SHELL SCRIPT</option>
+				<option name="OBJ">OBJECT FILE</option>
+				<option name="SYSIMAGE">SYSTEM IMAGE (.iso)</option>
+				<option name="NONE">None of the above</option>
+			</select>
+			<input type="submit" value="Submit" />
+		</form>
+		<br /><br />
+		{% for message in get_flashed_messages() %}
+		        <strong>{{ message }}</strong><br />
+		{% endfor %}
+	</body>
+</html>

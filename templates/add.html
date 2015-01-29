@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Add Tags</title>
+	</head>
+	<body>
+		<h1> Index Directory </h1>
+		<h4> Please fill in the form below to index a specific directory. </h4>
+		<form action="" method="POST">
+			<label>Directory: </label>
+			<input type="text" name="directory" />
+			<input type="submit" value="Submit" />
+		</form>
+		{% for message in get_flashed_messages() %}
+			{{ message }}<br />
+		{% endfor %}
+	</body>
+</html>
