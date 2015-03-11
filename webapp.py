@@ -10,7 +10,7 @@ app.secret_key = 'aslkdfoiq'
 
 @app.route('/')
 def root():
-    return "Please go to /add to add the tags & index files."
+    return render_template('index.html')
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -20,7 +20,7 @@ def add():
             addtags.traverse(directory)
             addtags.dumpJson()
             flash('All files in directory: ' + directory + ' indexed.')
-            flash('Please go to /search to search for the file.')
+            flash('Please go to <a href="search">search</a> to search for the files.')
         else:
             flash('Invalid directory path. Try again with a valid path.')
     return render_template('add.html')
