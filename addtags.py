@@ -31,15 +31,15 @@ def add_tag(files):
     path, ext = os.path.splitext(files)
     filename = os.path.basename(files)
     path = os.path.abspath(files)
-    for extension, tag in tags.items():
-        indexed.setdefault(tag, [])
     tag = get_tag(ext)
     indexed[tag].append((filename, path))
 
 def traverse(directory):
+    for extension, tag in tags.items():
+        indexed.setdefault(tag, [])
     for root, dirs, files in os.walk(directory):
         for each_file in files:
-            add_tag(each_file)
+            add_tag(root + each_file)
 
 def dumpJson():
     with open('tags.json', 'w') as json_tags:
