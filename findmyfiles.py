@@ -6,7 +6,6 @@ from re import search
 from sys import exit
 
 indexed = {}
-file_path = []
 
 def loadJson():
     with open('tags.json', 'r') as json_data:
@@ -14,6 +13,7 @@ def loadJson():
         indexed = json.load(json_data)
 
 def findmyfiles(filename, tag):
+    file_path = []
     if tag in indexed.keys():
         for each_file in indexed[tag]:
             actualfile = each_file[0]

@@ -15,7 +15,15 @@
 	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	</head>
+	<script type="text/JavaScript">
+			function clearRead() {
+				$("#results").remove();
+				}
+			}
+	</script>
 	<body class="container">
 		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 	      <div class="navbar-header">
@@ -72,15 +80,26 @@
 					<option name="SYSIMAGE">SYSTEM IMAGE (.iso)</option>
 					<option name="NONE">None of the above</option>
 				</select>
-				<button class="btn btn-success" type="submit">Submit</button>
+				<button class="btn btn-success" type="submit" onclick="clearRead()">Submit</button>
 			</form>
 		</div>
 		<br /><br />
-		{% for message in get_flashed_messages() %}
-		        <strong>{{ message }}</strong><br />
-		{% endfor %}
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+		<div id="results">
+			{% for message in get_flashed_messages() %}
+			        <strong>{{ message }}</strong><br />
+			{% endfor %}
+			{% if results %}
+				{% for files in results %}
+					<strong>File: {{ files[0] }} found at: {{ files[1] }} </strong> <hr>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<script type="text/JavaScript">
+			$(document).ready(function() {
+				$("strong").addClass("read");
+			});
+		</script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
 	    <script src="../static/js/bootstrap.min.js"></script>
 	</body>

@@ -27,17 +27,15 @@ def add():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    results = None
     if request.method == 'POST':
         filename = request.form['filename']
         file_type = request.form['file_type']
         findmyfiles.loadJson()
         results = findmyfiles.findmyfiles(filename, file_type)
-        if results:
-            for files in results:
-                flash("File: " + files[0] + " found at: " + files[1])
-        else:
-            flash("No files found. Please try with a different query.")
-    return render_template('search.html')
+        if not results:
+            flash('No files found. Please try with a different query.')
+    return render_template('search.html', results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

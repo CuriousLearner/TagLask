@@ -3,3 +3,10 @@
 body {
 	padding-top: 70px;
 }
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 40%;
+	right: 40%;
+}
